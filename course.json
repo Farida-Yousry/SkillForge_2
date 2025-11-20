@@ -1,0 +1,60 @@
+[
+  {
+    "courseId": "CS101",
+    "title": "Introduction to Computer Science",
+    "instructorId": "I12929",
+    "lessons": [
+      {
+        "title": "What is OOP?",
+        "lessonId": "CS101-L01",
+        "content": "A foundational look at Object-Oriented Programming principles."
+      },
+      {
+        "title": "Classes and Objects",
+        "lessonId": "CS101-L02",
+        "content": "Detailed exploration of class structure and object instantiation."
+      }
+    ],
+    "enrolledStudents": [
+      "S87938"
+    ]
+  },
+  {
+    "courseId": "MATH205",
+    "title": "Advanced Calculus",
+    "instructorId": "I12929",
+    "lessons": [
+      {
+        "title": "Derivatives Review",
+        "lessonId": "M205-L01",
+        "content": "Refresher on basic differentiation rules."
+      },
+      {
+        "title": "Integral Applications",
+        "lessonId": "M205-L02",
+        "content": "Exploring area and volume calculations using integration."
+      }
+    ],
+    "enrolledStudents": [
+      "S87938",
+      "S69879"
+    ]
+  },
+  {
+    "courseId": "SWE401",
+    "title": "Software Design Patterns",
+    "instructorId": "I100",
+    "lessons": [],
+    "enrolledStudents": [
+      "S87938"
+    ]
+  },
+  {
+    "courseId": "C92860",
+    "title": "python",
+    "description": "basicss",
+    "instructorId": "I12929",
+    "lessons": [],
+    "enrolledStudents": []
+  }
+]

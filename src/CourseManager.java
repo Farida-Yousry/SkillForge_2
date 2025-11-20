@@ -1,0 +1,112 @@
+import java.util.ArrayList;
+
+public class CourseManager{
+	 private ArrayList<Course> courses;
+	 private Database db;
+	 
+	 
+	public CourseManager(Database db) {
+		this.db = db;
+		this.courses = db.loadCourses();
+		if(this.courses==null) {
+			this.courses=new ArrayList<>();
+			}
+		}
+    public String generateNewId() {
+	String id=String.format("C%05d",System.currentTimeMillis()%100000);
+	 return id;
+	
+}
+	public void createCourse(String title,String description,String instructorId) {
+		courses.add(new Course(generateNewId(),title,description,instructorId));
+		db.saveToCourseFile(courses);
+	}
+	
+	 public boolean editCourse(String courseId,String title,String description) {
+			for(int i=0;i<courses.size();i++) {
+				if(courses.get(i).getCourseId().equals(courseId)) {
+				courses.get(i).setTitle(title);
+				courses.get(i).setDescription(description);
+				db.saveToCourseFile(courses);
+				return true;
+				
+				}}
+			return false;	
+		}
+	    public boolean removeCourse(String courseId){
+	        for(int i = 0; i < courses.size(); i++){
+	            if(courses.get(i).getCourseId().equals(courseId)){
+	                courses.remove(i);  
+	                db.saveToCourseFile(courses);
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+	    public Course getCourseById(String courseId) {
+	        for(int i = 0; i < courses.size(); i++){
+	            if(courses.get(i).getCourseId().equals(courseId)){
+	            	return courses.get(i);
+	            }
+	    }
+	        return null;
+}
+	    public ArrayList<Course> getCourseByInstructor(String instructorId) {
+	    	ArrayList<Course> instCourses=new ArrayList<>();
+	        for(int i = 0; i < courses.size(); i++){
+	            if(courses.get(i).getInstructorId().equals(instructorId)){
+	            	instCourses.add(courses.get(i));
+	            }
+	    }
+	        return instCourses;
+}
+	    public ArrayList<Course> getAllCourses(){
+	    	return courses;
+	    }
+	    public boolean deleteLessonFromCourse(String courseId,String lessonId) {
+	    	Course c= getCourseById(courseId);
+	    	if(c== null)return false;
+	    	
+	    		boolean isDeleted=c.deleteLesson(lessonId);
+	    		if(isDeleted) {
+	    			db.saveToCourseFile(courses);
+	    		}
+	    	
+	    	return isDeleted;
+	    }
+	    public boolean addLessonToCourse(String courseId,Lesson lesson) {
+	    	if(lesson==null||lesson.getLessonId()==null)return false;
+	    	Course c= getCourseById(courseId);
+	    	if(c == null)return false;
+	    	
+	    		boolean isAdded=c.getLessonById(lesson.getLessonId())== null;
+	    		if(isAdded) {
+	    			c.addLesson(lesson);
+	    			db.saveToCourseFile(courses);
+	    		}
+	    	
+	    	return isAdded;
+	    }
+	    public boolean enrollStudent(String courseId,String studentId) {
+	    	Course c= getCourseById(courseId);
+	    	if(c== null)return false;
+	    	boolean enrolled=false;
+	    	if(!c.getEnrolledStudents().contains(studentId)) {
+	    	c.enrollStudent(studentId);
+			db.saveToCourseFile(courses);
+			enrolled =true;
+	    }
+	    	return enrolled;
+	    }
+	    public ArrayList<User> getEnrolledStudents(String courseId){
+	    	Course c = getCourseById(courseId);
+	    	ArrayList<User> enrolled = new ArrayList<>();
+	    	for(String studentId : c.getEnrolledStudents()) {
+	    		User u = db.getUserById(studentId);
+	    		if(u != null)
+	    			enrolled.add(u);
+	    	}
+	    	return enrolled;
+	    }
+	  
+}
