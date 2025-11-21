@@ -56,6 +56,11 @@ public class QuizManager {
 		Quiz quiz=getQuizByLessonId(lessonId);
 		return lastTrial.getScore() >= (quiz.getQuestions().size()*0.6);
 		}
+	public ArrayList<TakeQuiz> getTrials() {
+		return trials;
+	}
+
+	
 		
 	}
 
