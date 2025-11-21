@@ -7,18 +7,20 @@ public class Course {
 	private String instructorId;
 	private ArrayList<Lesson> lessons;
 	private ArrayList<String> enrolledStudents;
+	private String status;
 
 
    public String getCourseId() {
 		return courseId;
 	}
 
-	public Course(String courseId, String title, String description, String instructorId) {
+	public Course(String courseId, String title, String description, String instructorId,String status) {
 	super();
 	this.courseId = courseId;
 	this.title = title;
 	this.description = description;
 	this.instructorId = instructorId;
+	this.status = status;
 	lessons =  new ArrayList<>();
 	enrolledStudents = new ArrayList<>();
 }
@@ -39,6 +41,14 @@ public class Course {
 		return instructorId;
 	}
 	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public ArrayList<Lesson> getLessons() {
 		return lessons;
 	}

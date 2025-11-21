@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class CourseManager{
 	 private ArrayList<Course> courses;
 	 private Database db;
+
+	
 	 
 	 
 	public CourseManager(Database db) {
@@ -18,7 +20,7 @@ public class CourseManager{
 	
 }
 	public void createCourse(String title,String description,String instructorId) {
-		courses.add(new Course(generateNewId(),title,description,instructorId));
+		courses.add(new Course(generateNewId(),title,description,instructorId,"PENDING"));
 		db.saveToCourseFile(courses);
 	}
 	
@@ -107,6 +109,22 @@ public class CourseManager{
 	    			enrolled.add(u);
 	    	}
 	    	return enrolled;
+	    }
+	    public ArrayList<Course> viewApprovedCourses(){
+	    	ArrayList<Course> approvedCourses = new ArrayList<>();
+	    	for(Course c : courses) {
+	    		if(c.getStatus().equals("APPROVED"))
+	    			approvedCourses.add(c);
+	    	}
+	    	return approvedCourses;
+	    }
+	    public ArrayList<Course> viewPendingCourses(){
+	    	ArrayList<Course> pendingCourses = new ArrayList<>();
+	    	for(Course c : courses) {
+	    		if(c.getStatus().equals("PENDING"))
+	    			pendingCourses.add(c);
+	    	}
+	    	return pendingCourses;
 	    }
 	  
 }
