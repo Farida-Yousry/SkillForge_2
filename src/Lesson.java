@@ -7,13 +7,16 @@ public class Lesson {
 		private String lessonId;
 		private String content;
 		private ArrayList<String> resources; 
+		private Quiz quiz;
 		
+
 	  // constructor
-		public Lesson(String lessonId,String title,String content,ArrayList<String> resources) {
+		public Lesson(String lessonId,String title,String content,ArrayList<String> resources,Quiz quiz) {
 		
 			this.lessonId=lessonId;
 			this.title=title;
 			this.content=content;
+			this.quiz=quiz;
 			if(resources==null) {
 				this.resources=new ArrayList<>();
 			}
@@ -34,6 +37,9 @@ public class Lesson {
 			else
 			this.resources=new ArrayList<>(resources);
 		}
+		public void setQuiz(Quiz quiz) {
+			this.quiz = quiz;
+		}
 		
 	// getters
 		public String getLessonId() {
@@ -52,6 +58,10 @@ public class Lesson {
 		public String toString() {
 			return lessonId+"-"+title;
 		}
+		public Quiz getQuiz() {
+			return quiz;
+		}
+	
 }
 		// methods
 		// course mangement
