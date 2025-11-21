@@ -4,16 +4,19 @@ import java.util.ArrayList;
     public class Student extends User{
         private ArrayList<Course> enrolledCourses;
         private  ArrayList<Progress> progress;
-        
+     
        
         
-   
-        public Student(String userName, String password, String email, String userId, String role, int age) {
+  
+       public Student(String userName, String password, String email, String userId, String role, int age) {
 			super(userName, password, email, userId, role, age);
-			this.enrolledCourses = new ArrayList<>();
-			this.progress = new ArrayList<>();
+			this.enrolledCourses = enrolledCourses;
+			this.progress = progress;
+			 this.enrolledCourses = new ArrayList<>();
+			 this.progress = new ArrayList<>();
 		}
-       public boolean enrollCourse(Course course) {
+
+	   public boolean enrollCourse(Course course) {
     	for(Course e:enrolledCourses) {
     	if(e.getCourseId().equals(course.getCourseId())) {
     		return false;
@@ -49,12 +52,5 @@ import java.util.ArrayList;
 		public void setProgress(ArrayList<Progress> progress) {
 			this.progress = progress;
 		}
-		
-		
-    
-
-    
-
-
     
 }

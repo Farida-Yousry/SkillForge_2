@@ -5,9 +5,13 @@ public class Course {
 	private String title;
 	private String description;
 	private String instructorId;
+	private String status;
 	private ArrayList<Lesson> lessons;
 	private ArrayList<String> enrolledStudents;
-	private String status;
+	private ArrayList<TakeQuiz> trials;
+	private  ArrayList<Certificate> certificate;
+	
+	
 
 
    public String getCourseId() {
@@ -21,8 +25,11 @@ public class Course {
 	this.description = description;
 	this.instructorId = instructorId;
 	this.status = status;
-	lessons =  new ArrayList<>();
-	enrolledStudents = new ArrayList<>();
+	this.lessons =  new ArrayList<>();
+	this.enrolledStudents = new ArrayList<>();
+	this.trials =  new ArrayList<>();
+	this.certificate = new ArrayList<>();
+	
 }
 
 	public String getTitle() {
@@ -41,6 +48,27 @@ public class Course {
 		return instructorId;
 	}
 	
+	public ArrayList<TakeQuiz> getTrials() {
+		 if(trials == null)
+				this.trials = new ArrayList<>();
+		return trials;
+	}
+
+	public void setTrials(ArrayList<TakeQuiz> trials) {
+		
+		this.trials = trials;
+	}
+
+	public ArrayList<Certificate> getCertificate() {
+		 if(this.certificate == null)
+			this.certificate = new ArrayList<>();
+		return this.certificate;
+	}
+
+	public void setCertificate(ArrayList<Certificate> certificate) {
+		this.certificate = certificate;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -108,5 +136,17 @@ public Lesson getLessonById(String lessonId) {
 }
 public String toString() {
 	return title;
+}
+public void addCertificate(Certificate certificate) {
+	 if(certificate == null)
+	this.certificate = new ArrayList<>();
+	 
+	this.certificate.add(certificate);
+}
+public void addTrial(TakeQuiz trials) {
+	 if(trials == null)
+	this.trials = new ArrayList<>();
+	 
+	this.trials.add(trials);
 }
 }

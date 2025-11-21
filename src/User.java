@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -14,15 +15,11 @@ public class User{
 	protected String password;
 	protected String email;
 	protected String userId;
-	//protected String fullName;
 	protected String role;
 	protected int age;
+    protected  ArrayList<Certificate> certificate;
 
-	
-	
-
-
-	
+		
 	public User(String userName, String password, String email, String userId, String role, int age) {
 		this.userName = userName;
 		this.password = password;
@@ -30,6 +27,7 @@ public class User{
 		this.userId = userId;
 		this.role = role;
 		this.age = age;
+		this.certificate = new ArrayList<>();
 	}
 	
 	public String getUserName() {
@@ -79,38 +77,19 @@ public class User{
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-	/*public String hashPassword(String password) {
-		try {
-			MessageDigest pass = MessageDigest.getInstance("SHA-256");
-			byte[] temp = pass.digest(password.getBytes());
-			StringBuffer s = new StringBuffer();
-			for(byte b : temp)
-				s.append(String.format("%02x",b & 0xff));
-			return s.toString();
-		} catch (NoSuchAlgorithmException e) {
-			
-			e.printStackTrace();
-			return null;
-			
-	}
-	
-}
-
-	 public void logout() {
-		 System.exit(0);
+	 public ArrayList<Certificate> getCertificate() {
+		 if(this.certificate == null)
+			 this.certificate = new ArrayList<>();
+			return this.certificate;
+		}
+	 public void setCertificate(ArrayList<Certificate> certificate) {
+			   this.certificate = certificate;
+		   }
+	 public void addCertificate(Certificate certificate) {
+		 if(this.certificate == null)
+		this.certificate = new ArrayList<>();
+		 if(certificate == null) return;
+		this.certificate.add(certificate);
 	 }
-	public String generateNewId(String role) {
-		String id;
-		if(role.equals("Student"))
-			id = String.format("S%05d",System.currentTimeMillis()%100000);
-		else 
-			id = String.format("I%05d",System.currentTimeMillis()%100000);
-		
-		this.userId = id;
-		 JOptionPane.showMessageDialog(null,"ID --> " + id);
-		 return id;
-		
-	}*/
 
 }

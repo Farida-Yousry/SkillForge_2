@@ -30,7 +30,8 @@ public class Analytics {
 		return ((double)numberOfCompleatedLessons(studentId,courseId) / totalLessons) *100;
 	}
 	public double averageScore(String lessonId) {
-		ArrayList<TakeQuiz> trials = quizManager.getTrials();
+		Course c = courseManager.getCourseByLesson(lessonId);
+		ArrayList<TakeQuiz> trials = c.getTrials();
 		int score = 0;
 		int numOfTrials = 0;
 		for(TakeQuiz q : trials) {
@@ -44,7 +45,8 @@ public class Analytics {
 		return (double)score/numOfTrials;
 	}
 	public int highestScore(String lessonId) {
-		ArrayList<TakeQuiz> trials = quizManager.getTrials();;
+		Course c = courseManager.getCourseByLesson(lessonId);
+		ArrayList<TakeQuiz> trials = c.getTrials();;
 		int highestScore = 0;
 		if(trials.size() == 0)return -1;
 		for(int i = 0;i<trials.size();i++) {
@@ -57,7 +59,8 @@ public class Analytics {
 		
 	}
 	public int leastScore(String lessonId) {
-		ArrayList<TakeQuiz> trials = quizManager.getTrials();;
+		Course c = courseManager.getCourseByLesson(lessonId);
+		ArrayList<TakeQuiz> trials = c.getTrials();;
 		int leastScore = 100;
 		if(trials.size() == 0)return -1;
 		for(int i = 0;i<trials.size();i++) {
@@ -69,7 +72,8 @@ public class Analytics {
 		return leastScore;
 	}
 	public int getNumberOfTrials(String lessonId) {
-		ArrayList<TakeQuiz> trials = quizManager.getTrials();;
+		Course c = courseManager.getCourseByLesson(lessonId);
+		ArrayList<TakeQuiz> trials = c.getTrials();;
 		int numOfTrials = 0;
 		for(TakeQuiz q : trials) {
 			if(q.getLessonId().equals(lessonId)) {

@@ -23,6 +23,7 @@ public class Database {
 		
 		return new ArrayList();
 	}
+	
 	public  ArrayList<User> loadUsers() {
 		try {
 			BufferedReader read = new BufferedReader(new FileReader(file2));

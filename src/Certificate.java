@@ -15,6 +15,7 @@ public class Certificate {
 		this.courseId = courseId;
 		this.releaseDate = releaseDate;
 	}
+
 	// getters
 	public String getCertificateId() {
 		return certificateId;

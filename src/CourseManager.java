@@ -46,9 +46,9 @@ public class CourseManager{
 	        return false;
 	    }
 	    public Course getCourseById(String courseId) {
-	        for(int i = 0; i < courses.size(); i++){
-	            if(courses.get(i).getCourseId().equals(courseId)){
-	            	return courses.get(i);
+	        for(Course c : courses){
+	            if(c.getCourseId().equals(courseId)){
+	            	return c;
 	            }
 	    }
 	        return null;
@@ -93,7 +93,7 @@ public class CourseManager{
 	    	Course c= getCourseById(courseId);
 	    	if(c== null)return false;
 	    	boolean enrolled=false;
-	    	if(!c.getEnrolledStudents().contains(studentId)) {
+	    	if(!c.getEnrolledStudents().contains(studentId) && c.getStatus().equals("APPROVED")) {
 	    	c.enrollStudent(studentId);
 			db.saveToCourseFile(courses);
 			enrolled =true;
@@ -126,5 +126,33 @@ public class CourseManager{
 	    	}
 	    	return pendingCourses;
 	    }
+	    public boolean addTrials(String courseId,TakeQuiz quiz) {
+	    	Course c = getCourseById(courseId);
+	    	if(c == null) return false;
+	    	c.addTrial(quiz);
+	    	db.saveToCourseFile(courses);
+	    	return true;
+	    }
+	    public Course getCourseByLesson(String lessonId) {
+	    if(lessonId == null) return null;
+	    	for(Course c : courses) {
+	    		if(c.getLessonById(lessonId) == null)
+	    			continue;
+	    	for(Lesson l : c.getLessons()) {
+	    		if(l!=null && l.getLessonId().equals(lessonId))
+	    			return c;
+	    	}
+	    		
+	    	}
+	    	return null;
+	    }
+		 public void addCertificateToCourse(Certificate certificate,String courseId) {
+			Course c =  getCourseById(courseId);
+			if(c == null)
+				return ;
+			c.addCertificate(certificate);
+			db.saveToCourseFile(courses);
+			
+		 }
 	  
 }
