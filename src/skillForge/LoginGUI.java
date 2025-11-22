@@ -1,4 +1,5 @@
 
+package skillForge;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -75,7 +76,7 @@ public class LoginGUI extends JFrame{
 		roleBox = new JComboBox<>();
 		roleBox.setBackground(SystemColor.inactiveCaption);
 		roleBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		roleBox.setModel(new DefaultComboBoxModel(new String[] {"Instructor", "Student"}));
+		roleBox.setModel(new DefaultComboBoxModel(new String[] {"Student", "Instructor","Admin"}));
 		panel.add(roleBox);
         getContentPane().add(panel,BorderLayout.CENTER);
 		
@@ -100,11 +101,15 @@ public class LoginGUI extends JFrame{
 						InstructorDashBoard dash =  new InstructorDashBoard(valid.getUserId());
 					dash.setVisible(true);
 				}
-					else {
+					else if(role.equals("Student")) {
 						StudentDashBoard dash =	new StudentDashBoard(valid.getUserId(),db);
 						dash.setVisible(true);
 					}
-					dispose();
+					else {
+						AdminDashBoard dash = new AdminDashBoard(valid.getUserId(),db);
+					    dash.setVisible(true);}
+					
+						dispose();
 				}
 				else {
 					JOptionPane.showMessageDialog(null,"Login failed");

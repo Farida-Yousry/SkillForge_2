@@ -1,4 +1,5 @@
 
+package skillForge;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -27,9 +28,7 @@ public class HomePage extends JFrame {
 	private JPanel contentPane;
 	private static Database db;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

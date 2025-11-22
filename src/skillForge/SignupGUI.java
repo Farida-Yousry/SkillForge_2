@@ -1,3 +1,4 @@
+package skillForge;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -90,7 +91,7 @@ public class SignupGUI extends JFrame {
 		roleBox = new JComboBox<>();
 		roleBox.setBackground(SystemColor.inactiveCaption);
 		roleBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		roleBox.setModel(new DefaultComboBoxModel(new String[] {"Student", "Instructor"}));
+		roleBox.setModel(new DefaultComboBoxModel(new String[] {"Student", "Instructor","Admin"}));
 		panel.add(roleBox);
        add(panel,BorderLayout.CENTER);
 		

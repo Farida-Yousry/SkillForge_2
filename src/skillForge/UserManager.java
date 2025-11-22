@@ -1,3 +1,4 @@
+package skillForge;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ return true;
 						return user;
 				}
 			}
-		//JOptionPane.showMessageDialog(null,"Login failed");
+		
 		return null;
 
 }
@@ -79,9 +80,10 @@ return true;
 	
 		if(role.equals("Student"))
 			id = String.format("S%05d",System.currentTimeMillis()%100000);
-		else 
+		else if(role.equals("Instructor"))
 			id = String.format("I%05d",System.currentTimeMillis()%100000);
-		
+		else
+			id = String.format("A%05d",System.currentTimeMillis()%100000);
 		for(int i=0;i<users.size();i++) {
 			if(id.equals(users.get(i).getUserId()))
 				return generateNewId(role);

@@ -1,3 +1,4 @@
+package skillForge;
 import java.util.ArrayList;
 
 public class Analytics {

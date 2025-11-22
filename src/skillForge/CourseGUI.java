@@ -1,3 +1,4 @@
+package skillForge;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -137,7 +138,7 @@ public class CourseGUI extends JPanel {
 					return;
 				}
 				String id=courseManage.generateNewId();
-				Course course = new Course(id,title,description,instructorId);
+				Course course = new Course(id,title,description,instructorId,"PENDING");
 				courseManage.createCourse(title, description, instructorId);
 				courseModel.addElement(course);
 				JOptionPane.showMessageDialog(this,"Course Added Successfully");
