@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Quiz {
 	// attributes
 	private String lessonId;
+	private String courseId;
 	private ArrayList<Question> questions;
 
  // constructor
@@ -24,6 +25,10 @@ public class Quiz {
   }
   public ArrayList<Question> getQuestions() {
 	return questions;
+}
+
+  public String getCourseId() {
+	return courseId;
 }
 
   public void setQuestions(ArrayList<Question> questions) {

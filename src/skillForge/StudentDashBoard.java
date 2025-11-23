@@ -12,6 +12,7 @@ public class StudentDashBoard extends JFrame {
     private Database db;
     private CourseManager courseManager;
     private LessonManager lessonManager;
+    private JButton btnQuiz;
 
     private JTable tblAvailable;
     private JTable tblMyCourses;
@@ -38,7 +39,9 @@ public class StudentDashBoard extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         table();
+        
         setVisible(true);
+    
     }
 
     private Student loadStudentFromDb(String studentId) {
@@ -137,7 +140,39 @@ public class StudentDashBoard extends JFrame {
    			
         panel.add(new JScrollPane(tblMyCourses), BorderLayout.CENTER);
         panel.add(btnViewLessons, BorderLayout.SOUTH);
-
+    	/*btnQuiz=new JButton("Take Quiz");
+		panel.add(btnQuiz,BorderLayout.SOUTH);
+		btnQuiz.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row=tblMyCourses.getSelectedRow();
+				if(row==-1) {
+					JOptionPane.showMessageDialog(StudentDashBoard.this, "Select a course first");
+				    return;
+				}
+				String courseId=(String)tblMyCourses.getValueAt(row,0);
+				Course selected=courseManager.getCourseById(courseId);
+				
+				if(selected==null || selected.getLessons().isEmpty()) {
+					JOptionPane.showMessageDialog(StudentDashBoard.this, "Selected course has no lessons");
+				     return;
+				}
+				Lesson lesson=selected.getLessons().get(0);
+				if(!courseManager.canAccess(student, lesson.getLessonId(), courseId)) {
+					JOptionPane.showMessageDialog(StudentDashBoard.this, "You must pass the previous lesson quiz");
+					return;
+				}
+				
+				Quiz quiz=lesson.getQuiz();
+				
+		  new QuizFrame(student.getUserId(),quiz,courseManager,db);
+				
+			}});
+		/*JPanel button=new JPanel(new FlowLayout(FlowLayout.CENTER));
+		button.add(btnViewLessons);
+		button.add(btnQuiz);
+		
+		panel.add(new JScrollPane(tblMyCourses),BorderLayout.CENTER);
+		panel.add(button,BorderLayout.SOUTH);*/
         return panel;
     }
 
@@ -225,7 +260,7 @@ public class StudentDashBoard extends JFrame {
         String courseId = (String) tblMyCourses.getValueAt(row, 0);
 
         
-        new StudentLessonPannel(student, courseId, lessonManager, db);
+        new StudentLessonPannel(student, courseId, lessonManager, db,courseManager);
         
         refreshMyCourses();
         refreshAvailableCourses();

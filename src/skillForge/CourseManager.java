@@ -155,5 +155,23 @@ public class CourseManager{
 			db.saveToCourseFile(courses);
 			
 		 }
+		 public boolean canAccess(Student student,String courseId,String lessonId) {
+			Course course=getCourseById(courseId);
+			if(course==null)return false;
+			ArrayList<Lesson> lessons=course.getLessons();
+			for(int i=0;i<lessons.size();i++) {
+				Lesson l=lessons.get(i);
+				if(l.getLessonId().equals(lessonId)) {
+					if(i==0)return true;
+					Lesson previous=lessons.get(i-1);
+					return student.checkIfLessonCompleted(courseId, previous.getLessonId());
+				}
+			}
+			 
+			 
+			 
+			 return false;
+			 
+		 }
 	  
 }

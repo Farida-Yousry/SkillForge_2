@@ -10,13 +10,15 @@ public class StudentLessonPannel extends JFrame {
     private Student student;
     private String courseId;
     private LessonManager lessonManager;
+    private CourseManager courseManager;
     private Database db;
     private JTable tblLessons;
 
-    public StudentLessonPannel(Student student, String courseId, LessonManager lessonManager, Database db) {
+    public StudentLessonPannel(Student student, String courseId, LessonManager lessonManager, Database db,CourseManager courseManager) {
         this.student = student;
         this.courseId = courseId;
         this.lessonManager = lessonManager;
+        this.courseManager = courseManager;
         this.db = db;
 
         setTitle("Lessons for " + courseId);
@@ -27,20 +29,7 @@ public class StudentLessonPannel extends JFrame {
         setVisible(true);
     }
 
-    private void complete() {
-    	setLayout(new BorderLayout());
-        tblLessons = new JTable();
-        refreshLessons();
 
-        JButton btnMark = new JButton("Mark Completed");
-        btnMark.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				markCompleted();
-			}
-        });
-        add(new JScrollPane(tblLessons), BorderLayout.CENTER);
-        add(btnMark, BorderLayout.SOUTH);
-    }
 
     private void refreshLessons() {
         ArrayList<Lesson> lessons = lessonManager.getLessonByCourse(courseId);
@@ -61,21 +50,23 @@ public class StudentLessonPannel extends JFrame {
         tblLessons.setModel(new javax.swing.table.DefaultTableModel(data, cols));
     }
 
-    private void markCompleted() {
-        int row = tblLessons.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Select a lesson first");
-            return;
-        }
-
-        String lessonId = (String) tblLessons.getValueAt(row, 0);
-
-        student.markLessonCompleted(courseId, lessonId);  
-        saveStudentToDb();
-
-        JOptionPane.showMessageDialog(this, "Marked as completed.");
-        refreshLessons();
+    private void complete() {
+    	setLayout(new BorderLayout());
+    	tblLessons=new JTable();
+    	refreshLessons();
+        JButton btnQuiz = new JButton("Take quiz");
+        btnQuiz.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				takeQuiz();
+			}
+        });
+        JPanel button=new JPanel(new FlowLayout(FlowLayout.CENTER));
+		button.add(btnQuiz);
+        add(new JScrollPane(tblLessons),BorderLayout.CENTER);
+		add(button,BorderLayout.SOUTH);
+    	
     }
+ 
 
     private void saveStudentToDb() {
         ArrayList<User> users = db.loadUsers();
@@ -92,4 +83,29 @@ public class StudentLessonPannel extends JFrame {
         }
         db.saveToUsersFile(users);
     }
+    private void takeQuiz() {
+		int row=tblLessons.getSelectedRow();
+		if(row==-1) {
+			JOptionPane.showMessageDialog(this, "Select a lessosn first");
+		    return;
+		}
+		ArrayList<Lesson>lessons=lessonManager.getLessonByCourse(courseId);
+		if(lessons==null || lessons.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "No lessons for this course");
+		}
+		Lesson lesson=lessons.get(row);
+		if(!courseManager.canAccess(student,courseId,lesson.getLessonId())) {
+			JOptionPane.showMessageDialog(this, "You must pass the previous lesson quiz");
+			return;
+		}
+		
+		Quiz quiz=lesson.getQuiz();
+		
+  QuizFrame q=new QuizFrame(student,quiz,courseManager,db,courseId);
+  q.addWindowListener(new java.awt.event.WindowAdapter() {
+      public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+   refreshLessons(); }
+  });
+   q.setVisible(true);
 }
+    }

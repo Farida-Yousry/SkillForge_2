@@ -9,9 +9,11 @@ public class Lesson {
 		private String content;
 		private ArrayList<String> resources; 
 		private Quiz quiz;
+		private boolean isPassed;
 		
 
-	  // constructor
+		
+		// constructor
 		public Lesson(String lessonId,String title,String content,ArrayList<String> resources,Quiz quiz) {
 		
 			this.lessonId=lessonId;
@@ -41,6 +43,9 @@ public class Lesson {
 		public void setQuiz(Quiz quiz) {
 			this.quiz = quiz;
 		}
+		public void setPassed(boolean isPassed) {
+			this.isPassed = isPassed;
+		}
 		
 	// getters
 		public String getLessonId() {
@@ -62,6 +67,10 @@ public class Lesson {
 		public Quiz getQuiz() {
 			return quiz;
 		}
+		  public boolean isPassed() {
+				return isPassed;
+			}
+	
 	
 }
 		// methods

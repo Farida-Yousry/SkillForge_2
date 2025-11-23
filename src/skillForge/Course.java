@@ -144,10 +144,10 @@ public void addCertificate(Certificate certificate) {
 	 
 	this.certificate.add(certificate);
 }
-public void addTrial(TakeQuiz trials) {
-	 if(trials == null)
+public void addTrial(TakeQuiz trial) {
+	 if(trial == null)
 	this.trials = new ArrayList<>();
 	 
-	this.trials.add(trials);
+	this.trials.add(trial);
 }
 }
