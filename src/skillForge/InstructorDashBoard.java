@@ -30,9 +30,9 @@ public class InstructorDashBoard extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InstructorDashBoard(String id) {
+	public InstructorDashBoard(String id, CourseManager courseManager) {
 	    
-		this.courseManager=new CourseManager(new Database());
+		this.courseManager=courseManager;
 		ArrayList<Course> instCourses=courseManager.getCourseByInstructor(id);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,6 +75,12 @@ public class InstructorDashBoard extends JFrame {
 		btnNewButton_1.setBackground(SystemColor.inactiveCaption);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		buttonPanel.add(btnNewButton_1);
+		
+		
+		JButton btnNewButton_2 = new JButton("View Analytics");
+		btnNewButton_2.setBackground(SystemColor.inactiveCaption);
+		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		buttonPanel.add(btnNewButton_2);
 		
 
 		
@@ -124,7 +130,41 @@ public class InstructorDashBoard extends JFrame {
 	 		}
 	 	    
 	    	});
-
+		btnNewButton_2.addActionListener(new ActionListener() {
+	 		public void actionPerformed(ActionEvent e) {
+	 		Course selected = (Course) availableCourses.getSelectedItem();
+	 		if(selected==null) {
+	 			JOptionPane.showMessageDialog(null, "Please Select a Course");
+	 			return;
+	 		}
+               
+               String studentId = JOptionPane.showInputDialog(null, "Enter Student ID : ");
+               if(studentId == null || studentId.trim().isEmpty())
+               return;
+               System.out.println("Input ID: [" + studentId.trim() + "]");
+               System.out.println("Enrolled List: " + selected.getEnrolledStudents());
+               String input = studentId.trim().toUpperCase();
+               boolean found = false;
+               for(String enrolledId : selected.getEnrolledStudents()) {
+            	   if(enrolledId!=null && enrolledId.trim().toUpperCase().equals(input)) {
+            		   found = true;
+            		   break;
+            	   }
+               }
+               if(!found) {
+            		JOptionPane.showMessageDialog(null, "Student not Found","Error",JOptionPane.ERROR_MESSAGE);
+    	 			return;
+               }
+               try {
+               Analytics analytics = new Analytics(new QuizManager(courseManager),courseManager);
+               new AnalyticsGUI(studentId.trim(),selected,analytics);
+	 			}catch (Exception ex) {
+	 			   JOptionPane.showMessageDialog(null, "Error opening Analytics: " + ex.getMessage(),
+                           "Error", JOptionPane.ERROR_MESSAGE);
+	 			}
+               }
+	 		
+		});
 		
 		btnNewButton_3.addActionListener(new ActionListener() {
 	 		public void actionPerformed(ActionEvent e) {

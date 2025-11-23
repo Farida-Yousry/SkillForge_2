@@ -1,9 +1,12 @@
 package skillForge;
 import java.util.ArrayList;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Lesson {
 	
 		// Attributes
+	@SerializedName("lessonTitle")
 		private String title;
 		private String lessonId;
 		private String content;
@@ -14,6 +17,18 @@ public class Lesson {
 
 		
 		// constructor
+		public Lesson(String lessonId,String title,String content,ArrayList<String> resources) {
+			
+			this.lessonId=lessonId;
+			this.title=title;
+			this.content=content;
+			if(resources==null) {
+				this.resources=new ArrayList<>();
+			}
+			else
+			this.resources=new ArrayList<>(resources);
+   }
+		
 		public Lesson(String lessonId,String title,String content,ArrayList<String> resources,Quiz quiz) {
 		
 			this.lessonId=lessonId;

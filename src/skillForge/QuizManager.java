@@ -11,11 +11,11 @@ public class QuizManager {
 	quizzes=new ArrayList<>();
 	this.cManager=cManager;
 	ArrayList<Course> courses=cManager.getAllCourses();
-	if(courses!=null) {
+	if(courses!=null ) {
 		for(Course c:courses) {
-			if(c!=null) {
+			if(c!=null && c.getLessons()!=null) {
 				for(Lesson l:c.getLessons()) {
-					if(l.getQuiz() != null)
+					if(l!=null && l.getQuiz() != null)
 					quizzes.add(l.getQuiz());
 				}
 			}
@@ -30,7 +30,7 @@ public class QuizManager {
  // get quiz using lesson ID
 	public Quiz getQuizByLessonId(String lessonId) {
 		for(Quiz q:quizzes) {
-			if(q.getLessonId().equals(lessonId)) {
+			if(q.getLessonId()!=null && q.getLessonId().equals(lessonId)) {
 				return q;
 			}
 		}
@@ -43,6 +43,7 @@ public class QuizManager {
 			int score=q.calculateScore(answers);
 			TakeQuiz quiz=new TakeQuiz(studentId,lessonId,score,new Date());
 			Course c=cManager.getCourseByLesson(lessonId);
+			if(c!=null)
 			cManager.addTrials(c.getCourseId(),quiz);
 		
 			return score;
@@ -52,6 +53,7 @@ public class QuizManager {
 	public TakeQuiz getLastTrial(String studentId,String lessonId) {
 		Course c=cManager.getCourseByLesson(lessonId);
 		TakeQuiz lastTaken=null;
+		if(c==null || c.getTrials()==null)return null;
 		for(TakeQuiz t:c.getTrials()) {
 			if(t.getStudentId().equals(studentId) && t.getLessonId().equals(lessonId)) {
 				if(lastTaken==null || t.getDateTaken().after(lastTaken.getDateTaken())) {
@@ -67,6 +69,7 @@ public class QuizManager {
 		TakeQuiz lastTrial=getLastTrial(studentId,lessonId);
 		if(lastTrial==null)return false;
 		Quiz quiz=getQuizByLessonId(lessonId);
+		if(quiz==null)return false;
 		return lastTrial.getScore() >= (quiz.getQuestions().size()*0.6);
 		}
 	

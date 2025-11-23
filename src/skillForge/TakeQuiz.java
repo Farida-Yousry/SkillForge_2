@@ -1,11 +1,17 @@
 package skillForge;
 import java.util.Date;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TakeQuiz {
 	//attributes
+	@SerializedName("studentId")
 	private String studentId;
+	@SerializedName("lessonId")
 	private String lessonId;
+	@SerializedName("score")
 	private int score;
+	@SerializedName("dateTaken")
 	private Date dateTaken;
 	
 	// constructor

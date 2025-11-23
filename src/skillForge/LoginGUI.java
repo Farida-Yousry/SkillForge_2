@@ -27,6 +27,7 @@ public class LoginGUI extends JFrame{
 	private JTextField txtUserName;
 	private JPasswordField txtPassword;
 	private JComboBox<String> roleBox;
+	private CourseManager courseManager;
 
 	
 
@@ -35,6 +36,7 @@ public class LoginGUI extends JFrame{
 	 */
 	public LoginGUI(Database db) {
 		
+		this.courseManager = new CourseManager(db);
 	
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +101,7 @@ public class LoginGUI extends JFrame{
 				if(valid != null) {
 					JOptionPane.showMessageDialog(null,"Login Successfully");
 					if(role.equals("Instructor")) {
-						InstructorDashBoard dash =  new InstructorDashBoard(valid.getUserId());
+						InstructorDashBoard dash =  new InstructorDashBoard(valid.getUserId(),courseManager);
 					dash.setVisible(true);
 				}
 					else if(role.equals("Student")) {

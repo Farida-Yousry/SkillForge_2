@@ -15,7 +15,7 @@ public class Database {
 	public  ArrayList<Course> loadCourses() {
 		try {
 			BufferedReader read = new BufferedReader(new FileReader(file1));
-			Gson gson = new Gson();
+			Gson gson = new GsonBuilder().setDateFormat("MMM dd, yyyy, hh:mm:ss a").create();
 			return gson.fromJson(read,new TypeToken<ArrayList<Course>>() {}.getType());
 
 		}catch(Exception e) {
