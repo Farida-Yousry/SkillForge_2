@@ -13,9 +13,18 @@ public class Lesson {
 		private ArrayList<String> resources; 
 		private Quiz quiz;
 		private boolean isPassed;
+		private String lessonStatus;
 		
 
 		
+		public String getLessonStatus() {
+			return lessonStatus;
+		}
+
+		public void setLessonStatus(String lessonStatus) {
+			this.lessonStatus = lessonStatus;
+		}
+
 		// constructor
 		public Lesson(String lessonId,String title,String content,ArrayList<String> resources) {
 			
@@ -27,7 +36,8 @@ public class Lesson {
 			}
 			else
 			this.resources=new ArrayList<>(resources);
-   }
+            this.lessonStatus = "Not Completed";
+		}
 		
 		public Lesson(String lessonId,String title,String content,ArrayList<String> resources,Quiz quiz) {
 		

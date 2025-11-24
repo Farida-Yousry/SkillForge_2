@@ -26,6 +26,7 @@ public class InstructorDashBoard extends JFrame {
 	private JTextField txtInstructor;
 	private CourseManager courseManager;
 	private JComboBox<Course> availableCourses;
+	private ArrayList<Course> instCourses;
 
 	/**
 	 * Create the frame.
@@ -33,7 +34,7 @@ public class InstructorDashBoard extends JFrame {
 	public InstructorDashBoard(String id, CourseManager courseManager) {
 	    
 		this.courseManager=courseManager;
-		ArrayList<Course> instCourses=courseManager.getCourseByInstructor(id);
+		this.instCourses=courseManager.getCourseByInstructor(id);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -50,7 +51,8 @@ public class InstructorDashBoard extends JFrame {
 	
 		availableCourses=new JComboBox<>();
 		DefaultComboBoxModel<Course> model=new DefaultComboBoxModel<>();
-		if(instCourses!=null) {
+		this.instCourses=courseManager.getCourseByInstructor(id);
+		if(this.instCourses!=null) {
 		for(Course c:instCourses) {
 			model.addElement(c);
 		}}
@@ -96,20 +98,20 @@ public class InstructorDashBoard extends JFrame {
 			
 		btnNewButton.addActionListener(new ActionListener() {
 	 		public void actionPerformed(ActionEvent e) {
-				
+	 			
 				JFrame frame = new JFrame("Manage Courses ");
 				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frame.setContentPane(new CourseGUI(courseManager,id));
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
-	 			CourseGUI  courGui = new CourseGUI(courseManager,id);
+	 			//CourseGUI  courGui = new CourseGUI(courseManager,id);
 	 			
-	 			courGui.setVisible(true);
+	 			//courGui.setVisible(true);
 	 		}
 	 	    
 	    	});
-		
+		instCourses=courseManager.getCourseByInstructor(id);
 		
 		btnNewButton_1.addActionListener(new ActionListener() {
 	 		public void actionPerformed(ActionEvent e) {
@@ -130,6 +132,7 @@ public class InstructorDashBoard extends JFrame {
 	 		}
 	 	    
 	    	});
+		instCourses=courseManager.getCourseByInstructor(id);
 		btnNewButton_2.addActionListener(new ActionListener() {
 	 		public void actionPerformed(ActionEvent e) {
 	 		Course selected = (Course) availableCourses.getSelectedItem();
@@ -165,7 +168,7 @@ public class InstructorDashBoard extends JFrame {
                }
 	 		
 		});
-		
+		instCourses=courseManager.getCourseByInstructor(id);
 		btnNewButton_3.addActionListener(new ActionListener() {
 	 		public void actionPerformed(ActionEvent e) {
 	 			int log = JOptionPane.showConfirmDialog(null, "Logout?","Confirm",JOptionPane.YES_NO_CANCEL_OPTION);

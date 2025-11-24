@@ -40,11 +40,16 @@ public class StudentLessonPannel extends JFrame {
 
         for (int i = 0; i < lessons.size(); i++) {
             Lesson l = lessons.get(i);
+            if( student.checkIfLessonCompleted(courseId, l.getLessonId()))
+        		l.setLessonStatus("Completed");
+    
             data[i][0] = l.getLessonId();
             data[i][1] = l.getTitle();
-            data[i][2] = student.checkIfLessonCompleted(courseId, l.getLessonId())
-                            ? "Completed"
-                            : "Not Completed";
+            data[i][2]=l.getLessonStatus();
+           // data[i][2] = student.checkIfLessonCompleted(courseId, l.getLessonId())
+                            //? "Completed"
+                           // : "Not Completed";
+        
         }
 
         tblLessons.setModel(new javax.swing.table.DefaultTableModel(data, cols));
@@ -104,7 +109,8 @@ public class StudentLessonPannel extends JFrame {
   QuizFrame q=new QuizFrame(student,quiz,courseManager,db,courseId);
   q.addWindowListener(new java.awt.event.WindowAdapter() {
       public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-   refreshLessons(); }
+   saveStudentToDb();
+    	  refreshLessons(); }
   });
    q.setVisible(true);
 }
