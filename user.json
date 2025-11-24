@@ -1,104 +1,64 @@
-[
-  {
-    "userName": "aliceProf",
-    "password": "4e40e8ffe0ee32fa53e139147ed559229a5930f89c2204706fc174beb36210b3",
-    "email": "alice@gmail.com",
-    "userId": "I31420",
-    "role": "Instructor",
-    "age": 40
-  },
-  {
-    "userName": "bobStudent",
-    "password": "6ca13d52ca70c883e0f0bb101e425a89e8624de51db2d2392593af6a84118090",
-    "email": "bob@gmail.com",
-    "userId": "S34090",
-    "role": "Student",
-    "age": 22
-  },
-  {
-    "userName": "charlieStudent",
-    "password": "b947df22462f6686f003e114dcb0cc91bf12f9915031cc0703eb9c74b4f444a7",
-    "email": "charlie@yahoo.com",
-    "userId": "S35427",
-    "role": "Student",
-    "age": 25
-  },
-  {
-    "userName": "ggxvds",
-    "password": "d7eece93a30a6642bb555f64d104cd4c903b4b3a0962b6adb6763914cfd2a3cb",
-    "email": "hjwsedrf@gmail.com",
-    "userId": "S83762",
-    "role": "Student",
-    "age": 5
-  },
-  {
-    "userName": "edrftgyh",
-    "password": "d970735896debdf260f4ea5d4f6bcd0c31dd9d6b2f02fd124d710234a0e1708e",
-    "email": "dwefrgdth@gmail.com",
-    "userId": "S63498",
-    "role": "Student",
-    "age": 22
-  },
-  {
-    "userName": "anakl",
-    "password": "1ba3d16e9881959f8c9a9762854f72c6e6321cdd44358a10a4e939033117eab9",
-    "email": "farida@gmail.com",
-    "userId": "S57403",
-    "role": "Student",
-    "age": 5
-  },
-  {
-    "userName": "farida",
-    "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-    "email": "hhhh@gmail.com",
-    "userId": "S87938",
-    "role": "Student",
-    "age": 20
-  },
-  {
-    "userName": "malak",
-    "password": "a1b881e34a3cc4e2fb7935d53728d7aba1686e749f5bbc94b45d30d5d4a197a4",
-    "email": "malak@gmail.com",
-    "userId": "I12929",
-    "role": "Instructor",
-    "age": 20
-  },
-  {
-    "enrolledCourses": [
-      {
-        "courseId": "MATH205",
-        "title": "Advanced Calculus",
-        "instructorId": "I12929",
-        "lessons": [
-          {
-            "title": "Derivatives Review",
-            "lessonId": "M205-L01",
-            "content": "Refresher on basic differentiation rules."
-          },
-          {
-            "title": "Integral Applications",
-            "lessonId": "M205-L02",
-            "content": "Exploring area and volume calculations using integration."
-          }
-        ],
-        "enrolledStudents": [
-          "S87938",
-          "S69879"
-        ]
-      }
-    ],
-    "progress": [
-      {
-        "courseId": "MATH205",
-        "lessonId": "M205-L01",
-        "completed": true
-      }
-    ],
-    "userName": "Habiba Ahmed",
-    "password": "0d733f114520fb15466755a1f8e9c47e4938fa061d5bd50566b717270bf6940c",
-    "email": "biba@gmail.com",
-    "userId": "S69879",
-    "role": "Student",
-    "age": 20
-  }
-]
+{
+  "users": [
+    {
+      "userName": "instr",
+      "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+      "email": "iihhhh@gmail.com",
+      "userId": "I85220",
+      "role": "Instructor",
+      "age": 55
+    },
+    {
+      "enrolledCourses": [
+        "C74815",
+        "C08067",
+        "C52741"
+      ],
+      "progress": [
+        {
+          "courseId": "C08067",
+          "lessonId": "L50918",
+          "completed": false
+        },
+        {
+          "courseId": "C08067",
+          "lessonId": "L50918",
+          "completed": false
+        },
+        {
+          "courseId": "C52741",
+          "lessonId": "L98941",
+          "completed": true
+        },
+        {
+          "courseId": "C52741",
+          "lessonId": "L98941",
+          "completed": true
+        }
+      ],
+      "certificates": [
+        {
+          "certificateId": "CR76180",
+          "studentId": "S20405",
+          "courseId": "C52741",
+          "releaseDate": "Nov 24, 2025, 1:46:16 AM"
+        }
+      ],
+      "lessonStatus": "Completed",
+      "userName": "stude1",
+      "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+      "email": "kkk@yahoo.com",
+      "userId": "S20405",
+      "role": "Student",
+      "age": 52
+    },
+    {
+      "userName": "admin",
+      "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+      "email": "mmmm@yahoo.com",
+      "userId": "A47546",
+      "role": "Admin",
+      "age": 50
+    }
+  ]
+}

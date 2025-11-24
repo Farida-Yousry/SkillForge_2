@@ -38,25 +38,7 @@ public class QuizFrame extends JFrame {
 	private CourseManager cManager;
 	private Database db;
     private String courseId;
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					QuizFrame frame = new QuizFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	/*}
 
-	/**
-	 * Create the frame.
-	 */
 	public QuizFrame(Student student,Quiz quiz,CourseManager cManager,Database db,String courseId) {
 		questionButtons=new ArrayList<>();
 		 questionPanels=new ArrayList<>();
@@ -141,8 +123,8 @@ public class QuizFrame extends JFrame {
 		 int numberOfQuestions=quiz.getQuestions().size();
 		 double percent=(double)score/numberOfQuestions*100;
 		 btnSubmit.setEnabled(false);
-		 JPanel resultsPanel=new JPanel();
-		 resultsPanel.setLayout(new BoxLayout(resultsPanel,BoxLayout.Y_AXIS));
+		 //JPanel resultsPanel=new JPanel();
+		// resultsPanel.setLayout(new BoxLayout(resultsPanel,BoxLayout.Y_AXIS));
 		 
 		 JOptionPane.showMessageDialog(QuizFrame.this,"Result = " + percent+"%");
 		 
@@ -159,15 +141,7 @@ public class QuizFrame extends JFrame {
 		 if(percent>=60.0) {
 			 String lessonId=quiz.getLessonId();
 				 student.markLessonCompleted(courseId, lessonId);
-				 ArrayList<User> users=db.loadUsers();
-				 for(int i=0;i<users.size();i++) {
-					 User x=users.get(i);
-					 if(x.getUserId().equals(student.getUserId())) {
-						 users.set(i,student);
-						 break;
-					 }
-				 }
-				 db.saveToUsersFile(users);
+			saveStudentToDb();
 			 
 			 JOptionPane.showMessageDialog(QuizFrame.this,"Quiz passed successfully!");
 		 }
@@ -178,4 +152,21 @@ public class QuizFrame extends JFrame {
 		 
 		 
 } 
-	 }
+	 private void saveStudentToDb()
+	 {
+		 ArrayList<User> users=db.loadUsers();
+		 boolean replaced=false;
+		 for(int i=0;i<users.size();i++) {
+			// User x=users.get(i);
+			 if(users.get(i).getUserId().equals(student.getUserId())) {
+				 users.set(i,student);
+				 replaced=true;
+				 break;
+			 }
+		 }
+		 if(!replaced) {
+			 users.add(student);
+		 }
+		 db.saveToUsersFile(users);
+		 
+	 }	 }

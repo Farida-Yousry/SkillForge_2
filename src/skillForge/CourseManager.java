@@ -2,7 +2,7 @@ package skillForge;
 import java.util.ArrayList;
 
 public class CourseManager{
-	 private ArrayList<Course> courses;
+	 private static ArrayList<Course> courses;
 	 private Database db;
 
 	
@@ -46,7 +46,7 @@ public class CourseManager{
 	        }
 	        return false;
 	    }
-	    public Course getCourseById(String courseId) {
+	    public static Course getCourseById(String courseId) {
 	        for(Course c : courses){
 	            if(c.getCourseId().equals(courseId)){
 	            	return c;
@@ -96,6 +96,7 @@ public class CourseManager{
 	    	boolean enrolled=false;
 	    	if(!c.getEnrolledStudents().contains(studentId) && c.getStatus().equals("APPROVED")) {
 	    	c.enrollStudent(studentId);
+	    	
 			db.saveToCourseFile(courses);
 			enrolled =true;
 	    }
@@ -114,15 +115,17 @@ public class CourseManager{
 	    public ArrayList<Course> viewApprovedCourses(){
 	    	ArrayList<Course> approvedCourses = new ArrayList<>();
 	    	for(Course c : courses) {
-	    		if(c.getStatus().equals("APPROVED"))
-	    			approvedCourses.add(c);
+	    		if(c.getStatus().equals("APPROVED")) {
+	    			approvedCourses.add(c);}
 	    	}
 	    	return approvedCourses;
 	    }
 	    public ArrayList<Course> viewPendingCourses(){
 	    	ArrayList<Course> pendingCourses = new ArrayList<>();
-	    	for(Course c : courses) {
-	    		if(c.getStatus().equals("PENDING"))
+	    	ArrayList<Course> allCourses = getAllCourses();
+	    	for(Course c : allCourses) {
+	    		if(c!=null && c.getStatus() !=null && c.getStatus().equals("PENDING"))
+	    		
 	    			pendingCourses.add(c);
 	    	}
 	    	return pendingCourses;

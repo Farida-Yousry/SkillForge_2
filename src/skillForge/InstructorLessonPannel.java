@@ -161,7 +161,7 @@ public class InstructorLessonPannel extends JPanel {
 				
 				boolean isSaved=manager.addLessonToCourse(course.getCourseId(), addedLesson);
 				if(isSaved) {
-					course.addLesson(addedLesson);
+					//course.addLesson(addedLesson);
 				lessonModel.addElement(addedLesson);
 				titleField.setText("");
 				contentArea.setText("");
@@ -218,6 +218,7 @@ public class InstructorLessonPannel extends JPanel {
 			    //  boolean deleted=course.deleteLesson(selected.getLessonId());
 			      boolean deletedd=manager.deleteLessonFromCourse(course.getCourseId(),selected.getLessonId());
 			   if(deletedd) {
+				   course.deleteLesson(selected.getLessonId());
 				 lessonModel.removeElement(selected);
 				
 			   JOptionPane.showMessageDialog(this,"Lesson deleted Successfully");
@@ -316,7 +317,7 @@ public class InstructorLessonPannel extends JPanel {
      				titleField.setText("");
     				contentArea.setText("");
     				resoursesField.setText("");
-    				contentQuiz.setText("");
+    				
  					//JOptionPane.showMessageDialog(this,"Please select a lesson");
  					return;
  				}

@@ -1,60 +1,213 @@
 [
   {
-    "courseId": "CS101",
-    "title": "Introduction to Computer Science",
-    "instructorId": "I12929",
+    "courseId": "C74815",
+    "title": "dtrfgvyhdsxfghjfgh",
+    "description": "wqaesrxdtfgyubhjnimk",
+    "instructorId": "I85220",
+    "status": "APPROVED",
     "lessons": [
       {
-        "title": "What is OOP?",
-        "lessonId": "CS101-L01",
-        "content": "A foundational look at Object-Oriented Programming principles."
+        "lessonTitle": "ggggsdtrfygu",
+        "lessonId": "L08559",
+        "content": "ffffdsfxgcvyhb",
+        "resources": [
+          "rrrrrasdfxgchvyjh"
+        ],
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
       },
       {
-        "title": "Classes and Objects",
-        "lessonId": "CS101-L02",
-        "content": "Detailed exploration of class structure and object instantiation."
+        "lessonTitle": "sadfghjk",
+        "lessonId": "L58858",
+        "content": "sadfgc jhbk",
+        "resources": [
+          "asdfgcjhb k"
+        ],
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
+      },
+      {
+        "lessonTitle": "adsfgrthvyj",
+        "lessonId": "L69370",
+        "content": "adsfrgthvyj",
+        "resources": [
+          "dsfgchjbk"
+        ],
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
+      },
+      {
+        "lessonTitle": "sadfgrhvjbkmalak",
+        "lessonId": "L06595",
+        "content": "asdfgchjbk",
+        "resources": [
+          "sadfgchjbknl"
+        ],
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
+      },
+      {
+        "lessonTitle": "alakdfhftjhfdrytryr",
+        "lessonId": "L23387",
+        "content": "asdfgchjbk",
+        "resources": [
+          "sadfgchjbknlfdhdh"
+        ],
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
       }
     ],
     "enrolledStudents": [
-      "S87938"
-    ]
-  },
-  {
-    "courseId": "MATH205",
-    "title": "Advanced Calculus",
-    "instructorId": "I12929",
-    "lessons": [
+      "S20405"
+    ],
+    "trials": [
       {
-        "title": "Derivatives Review",
-        "lessonId": "M205-L01",
-        "content": "Refresher on basic differentiation rules."
+        "studentId": "S20405",
+        "lessonId": "L17863",
+        "score": 1,
+        "dateTaken": "Nov 24, 2025, 12:58:43 AM"
       },
       {
-        "title": "Integral Applications",
-        "lessonId": "M205-L02",
-        "content": "Exploring area and volume calculations using integration."
+        "studentId": "S20405",
+        "lessonId": "L17863",
+        "score": 1,
+        "dateTaken": "Nov 24, 2025, 1:07:25 AM"
+      }
+    ],
+    "certificate": []
+  },
+  {
+    "courseId": "C08067",
+    "title": "fvdvffvvf",
+    "description": "evfefvffve",
+    "instructorId": "I85220",
+    "status": "APPROVED",
+    "lessons": [
+      {
+        "lessonTitle": "eddddwcfew",
+        "lessonId": "L50918",
+        "content": "edcwc",
+        "resources": [
+          "ewcfecvw"
+        ],
+        "quiz": {
+          "lessonId": "L50918",
+          "questions": [
+            {
+              "question": "cqcece",
+              "choices": [
+                "cwc",
+                "wrvr"
+              ],
+              "correctChoice": 0
+            }
+          ]
+        },
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
+      },
+      {
+        "lessonTitle": "eddddwcfew",
+        "lessonId": "L50918",
+        "content": "edcwc",
+        "resources": [
+          "ewcfecvw"
+        ],
+        "quiz": {
+          "lessonId": "L50918",
+          "questions": [
+            {
+              "question": "cqcece",
+              "choices": [
+                "cwc",
+                "wrvr"
+              ],
+              "correctChoice": 0
+            }
+          ]
+        },
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
       }
     ],
     "enrolledStudents": [
-      "S87938",
-      "S69879"
-    ]
+      "S20405"
+    ],
+    "trials": [],
+    "certificate": []
   },
   {
-    "courseId": "SWE401",
-    "title": "Software Design Patterns",
-    "instructorId": "I100",
-    "lessons": [],
+    "courseId": "C52741",
+    "title": "bbbbb",
+    "description": "rrrrrrrr",
+    "instructorId": "I85220",
+    "status": "APPROVED",
+    "lessons": [
+      {
+        "lessonTitle": "hhhh",
+        "lessonId": "L98941",
+        "content": "gggg",
+        "resources": [
+          "fffff"
+        ],
+        "quiz": {
+          "lessonId": "L98941",
+          "questions": [
+            {
+              "question": "ffffff",
+              "choices": [
+                "eee",
+                "hyyy"
+              ],
+              "correctChoice": 0
+            }
+          ]
+        },
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
+      },
+      {
+        "lessonTitle": "hhhh",
+        "lessonId": "L98941",
+        "content": "gggg",
+        "resources": [
+          "fffff"
+        ],
+        "quiz": {
+          "lessonId": "L98941",
+          "questions": [
+            {
+              "question": "ffffff",
+              "choices": [
+                "eee",
+                "hyyy"
+              ],
+              "correctChoice": 0
+            }
+          ]
+        },
+        "isPassed": false,
+        "lessonStatus": "Not Completed"
+      }
+    ],
     "enrolledStudents": [
-      "S87938"
+      "S20405"
+    ],
+    "trials": [
+      {
+        "studentId": "S20405",
+        "lessonId": "L98941",
+        "score": 1,
+        "dateTaken": "Nov 24, 2025, 1:46:03 AM"
+      }
+    ],
+    "certificate": [
+      {
+        "certificateId": "CR76180",
+        "studentId": "S20405",
+        "courseId": "C52741",
+        "releaseDate": "Nov 24, 2025, 1:46:16 AM"
+      }
     ]
-  },
-  {
-    "courseId": "C92860",
-    "title": "python",
-    "description": "basicss",
-    "instructorId": "I12929",
-    "lessons": [],
-    "enrolledStudents": []
   }
 ]

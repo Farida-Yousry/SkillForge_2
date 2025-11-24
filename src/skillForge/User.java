@@ -18,7 +18,7 @@ public class User{
 	protected String userId;
 	protected String role;
 	protected int age;
-    protected  ArrayList<Certificate> certificate;
+   
 
 		
 	public User(String userName, String password, String email, String userId, String role, int age) {
@@ -28,7 +28,7 @@ public class User{
 		this.userId = userId;
 		this.role = role;
 		this.age = age;
-		this.certificate = new ArrayList<>();
+		
 	}
 	
 	public String getUserName() {
@@ -78,19 +78,7 @@ public class User{
 	public void setAge(int age) {
 		this.age = age;
 	}
-	 public ArrayList<Certificate> getCertificate() {
-		 if(this.certificate == null)
-			 this.certificate = new ArrayList<>();
-			return this.certificate;
-		}
-	 public void setCertificate(ArrayList<Certificate> certificate) {
-			   this.certificate = certificate;
-		   }
-	 public void addCertificate(Certificate certificate) {
-		 if(this.certificate == null)
-		this.certificate = new ArrayList<>();
-		 if(certificate == null) return;
-		this.certificate.add(certificate);
-	 }
+
+	
 
 }
